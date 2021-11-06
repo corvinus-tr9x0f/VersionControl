@@ -18,9 +18,25 @@ namespace WebServiceWeek06
     {
         BindingList<RateData> Rates = new BindingList<RateData>();
         string result;
+        BindingList<string> Currencies = new BindingList<string>();
+
         public Form1()
         {
             InitializeComponent();
+
+            var mnbService2 = new MNBArfolyamServiceSoapClient();
+
+            var request2 = new GetCurrenciesRequestBody();
+            var response2 = mnbService2.GetCurrencies(request2);
+            var result2 = response2.GetCurrenciesResult;
+
+            var xml2 = new XmlDocument();
+            xml2.LoadXml(result2);
+            foreach (XmlElement item in xml2.DocumentElement.ChildNodes[0])
+            {
+                string newItem = item.InnerText;
+                Currencies.Add(newItem);
+            }
 
             RefreshData();
         }
@@ -31,6 +47,7 @@ namespace WebServiceWeek06
 
             GetWebService();
             dataGridView1.DataSource = Rates;
+            comboBox1.DataSource = Currencies;
             ProcessXML();
             CreateDiagram();
         }
@@ -64,6 +81,7 @@ namespace WebServiceWeek06
                 rate.Date = DateTime.Parse(element.GetAttribute("date"));
 
                 var childElement = (XmlElement)element.ChildNodes[0];
+                if (childElement == null) continue;
                 rate.Currency = childElement.GetAttribute("curr");
 
                 var unit = decimal.Parse(childElement.GetAttribute("unit"));
