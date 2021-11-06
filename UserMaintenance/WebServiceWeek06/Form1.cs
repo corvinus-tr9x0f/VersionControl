@@ -7,17 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WebServiceWeek06.Entities;
 using WebServiceWeek06.MnbServiceReference;
 
 namespace WebServiceWeek06
 {
     public partial class Form1 : Form
     {
+        BindingList<RateData> Rates = new BindingList<RateData>();
+
         public Form1()
         {
             InitializeComponent();
 
             GetWebService();
+
+            dataGridView1.DataSource = Rates;
         }
 
         private void GetWebService()
