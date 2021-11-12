@@ -13,6 +13,7 @@ namespace FactoryPatternWeek08.Abstractions
         public Toy()
         {
             AutoSize = false;
+            Top = 150;
             Width = 50;
             Height = Width;
             Paint += Toy_Paint;

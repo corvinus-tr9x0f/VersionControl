@@ -31,12 +31,15 @@ namespace FactoryPatternWeek08
         {
             this.components = new System.ComponentModel.Container();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.btnRibbonColor = new System.Windows.Forms.Button();
+            this.btnBoxColor = new System.Windows.Forms.Button();
+            this.btnPresent = new System.Windows.Forms.Button();
+            this.btnColor = new System.Windows.Forms.Button();
+            this.btnCar = new System.Windows.Forms.Button();
+            this.lblNext = new System.Windows.Forms.Label();
+            this.btnBall = new System.Windows.Forms.Button();
             this.createTimer = new System.Windows.Forms.Timer(this.components);
             this.conveyorTimer = new System.Windows.Forms.Timer(this.components);
-            this.btnCar = new System.Windows.Forms.Button();
-            this.btnBall = new System.Windows.Forms.Button();
-            this.lblNext = new System.Windows.Forms.Label();
-            this.btnColor = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,6 +47,9 @@ namespace FactoryPatternWeek08
             // 
             this.mainPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainPanel.Controls.Add(this.btnRibbonColor);
+            this.mainPanel.Controls.Add(this.btnBoxColor);
+            this.mainPanel.Controls.Add(this.btnPresent);
             this.mainPanel.Controls.Add(this.btnColor);
             this.mainPanel.Controls.Add(this.btnCar);
             this.mainPanel.Controls.Add(this.lblNext);
@@ -52,6 +58,75 @@ namespace FactoryPatternWeek08
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(594, 306);
             this.mainPanel.TabIndex = 0;
+            // 
+            // btnRibbonColor
+            // 
+            this.btnRibbonColor.BackColor = System.Drawing.Color.Orange;
+            this.btnRibbonColor.Location = new System.Drawing.Point(239, 70);
+            this.btnRibbonColor.Name = "btnRibbonColor";
+            this.btnRibbonColor.Size = new System.Drawing.Size(75, 23);
+            this.btnRibbonColor.TabIndex = 7;
+            this.btnRibbonColor.UseVisualStyleBackColor = false;
+            this.btnRibbonColor.Click += new System.EventHandler(this.btnColor_Click);
+            // 
+            // btnBoxColor
+            // 
+            this.btnBoxColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnBoxColor.Location = new System.Drawing.Point(239, 41);
+            this.btnBoxColor.Name = "btnBoxColor";
+            this.btnBoxColor.Size = new System.Drawing.Size(75, 23);
+            this.btnBoxColor.TabIndex = 6;
+            this.btnBoxColor.UseVisualStyleBackColor = false;
+            this.btnBoxColor.Click += new System.EventHandler(this.btnColor_Click);
+            // 
+            // btnPresent
+            // 
+            this.btnPresent.Location = new System.Drawing.Point(239, 12);
+            this.btnPresent.Name = "btnPresent";
+            this.btnPresent.Size = new System.Drawing.Size(75, 23);
+            this.btnPresent.TabIndex = 5;
+            this.btnPresent.Text = "PRESENT";
+            this.btnPresent.UseVisualStyleBackColor = true;
+            this.btnPresent.Click += new System.EventHandler(this.btnPresent_Click);
+            // 
+            // btnColor
+            // 
+            this.btnColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnColor.Location = new System.Drawing.Point(158, 41);
+            this.btnColor.Name = "btnColor";
+            this.btnColor.Size = new System.Drawing.Size(75, 23);
+            this.btnColor.TabIndex = 4;
+            this.btnColor.UseVisualStyleBackColor = false;
+            this.btnColor.Click += new System.EventHandler(this.btnColor_Click);
+            // 
+            // btnCar
+            // 
+            this.btnCar.Location = new System.Drawing.Point(77, 12);
+            this.btnCar.Name = "btnCar";
+            this.btnCar.Size = new System.Drawing.Size(75, 23);
+            this.btnCar.TabIndex = 1;
+            this.btnCar.Text = "CAR";
+            this.btnCar.UseVisualStyleBackColor = true;
+            this.btnCar.Click += new System.EventHandler(this.btnCar_Click);
+            // 
+            // lblNext
+            // 
+            this.lblNext.AutoSize = true;
+            this.lblNext.Location = new System.Drawing.Point(3, 17);
+            this.lblNext.Name = "lblNext";
+            this.lblNext.Size = new System.Drawing.Size(68, 13);
+            this.lblNext.TabIndex = 3;
+            this.lblNext.Text = "Coming next:";
+            // 
+            // btnBall
+            // 
+            this.btnBall.Location = new System.Drawing.Point(158, 12);
+            this.btnBall.Name = "btnBall";
+            this.btnBall.Size = new System.Drawing.Size(75, 23);
+            this.btnBall.TabIndex = 2;
+            this.btnBall.Text = "BALL";
+            this.btnBall.UseVisualStyleBackColor = true;
+            this.btnBall.Click += new System.EventHandler(this.btnBall_Click);
             // 
             // createTimer
             // 
@@ -64,45 +139,6 @@ namespace FactoryPatternWeek08
             this.conveyorTimer.Enabled = true;
             this.conveyorTimer.Interval = 10;
             this.conveyorTimer.Tick += new System.EventHandler(this.conveyorTimer_Tick);
-            // 
-            // btnCar
-            // 
-            this.btnCar.Location = new System.Drawing.Point(13, 12);
-            this.btnCar.Name = "btnCar";
-            this.btnCar.Size = new System.Drawing.Size(75, 23);
-            this.btnCar.TabIndex = 1;
-            this.btnCar.Text = "CAR";
-            this.btnCar.UseVisualStyleBackColor = true;
-            this.btnCar.Click += new System.EventHandler(this.btnCar_Click);
-            // 
-            // btnBall
-            // 
-            this.btnBall.Location = new System.Drawing.Point(94, 12);
-            this.btnBall.Name = "btnBall";
-            this.btnBall.Size = new System.Drawing.Size(75, 23);
-            this.btnBall.TabIndex = 2;
-            this.btnBall.Text = "BALL";
-            this.btnBall.UseVisualStyleBackColor = true;
-            this.btnBall.Click += new System.EventHandler(this.btnBall_Click);
-            // 
-            // lblNext
-            // 
-            this.lblNext.AutoSize = true;
-            this.lblNext.Location = new System.Drawing.Point(175, 12);
-            this.lblNext.Name = "lblNext";
-            this.lblNext.Size = new System.Drawing.Size(68, 13);
-            this.lblNext.TabIndex = 3;
-            this.lblNext.Text = "Coming next:";
-            // 
-            // button1
-            // 
-            this.btnColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnColor.Location = new System.Drawing.Point(94, 41);
-            this.btnColor.Name = "button1";
-            this.btnColor.Size = new System.Drawing.Size(75, 23);
-            this.btnColor.TabIndex = 4;
-            this.btnColor.UseVisualStyleBackColor = false;
-            this.btnColor.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -127,6 +163,9 @@ namespace FactoryPatternWeek08
         private System.Windows.Forms.Label lblNext;
         private System.Windows.Forms.Button btnBall;
         private System.Windows.Forms.Button btnColor;
+        private System.Windows.Forms.Button btnRibbonColor;
+        private System.Windows.Forms.Button btnBoxColor;
+        private System.Windows.Forms.Button btnPresent;
     }
 }
 
