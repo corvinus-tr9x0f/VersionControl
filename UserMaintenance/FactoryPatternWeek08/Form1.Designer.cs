@@ -36,7 +36,7 @@ namespace FactoryPatternWeek08
             this.btnCar = new System.Windows.Forms.Button();
             this.btnBall = new System.Windows.Forms.Button();
             this.lblNext = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnColor = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,7 +44,7 @@ namespace FactoryPatternWeek08
             // 
             this.mainPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mainPanel.Controls.Add(this.button1);
+            this.mainPanel.Controls.Add(this.btnColor);
             this.mainPanel.Controls.Add(this.btnCar);
             this.mainPanel.Controls.Add(this.lblNext);
             this.mainPanel.Controls.Add(this.btnBall);
@@ -96,13 +96,13 @@ namespace FactoryPatternWeek08
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button1.Location = new System.Drawing.Point(94, 41);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnColor.Location = new System.Drawing.Point(94, 41);
+            this.btnColor.Name = "button1";
+            this.btnColor.Size = new System.Drawing.Size(75, 23);
+            this.btnColor.TabIndex = 4;
+            this.btnColor.UseVisualStyleBackColor = false;
+            this.btnColor.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -126,7 +126,7 @@ namespace FactoryPatternWeek08
         private System.Windows.Forms.Button btnCar;
         private System.Windows.Forms.Label lblNext;
         private System.Windows.Forms.Button btnBall;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnColor;
     }
 }
 
