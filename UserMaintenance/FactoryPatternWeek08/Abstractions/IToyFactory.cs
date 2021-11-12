@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FactoryPatternWeek08.Abstractions
 {
-    public interface IToy_Factory
+    public interface IToyFactory
     {
         Toy CreateNew();
     }
