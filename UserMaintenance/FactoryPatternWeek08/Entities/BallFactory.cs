@@ -8,7 +8,7 @@ namespace FactoryPatternWeek08.Entities
 {
     public class BallFactory
     {
-        public Toy CreateNew()
+        public Ball CreateNew()
         {
             return new Ball();
         }
