@@ -13,7 +13,7 @@ namespace FactoryPatternWeek08
 {
     public partial class Form1 : Form
     {
-        List<Ball> _balls = new List<Ball>();
+        List<Toy> _balls = new List<Toy>();
         
         private BallFactory _factory;
 
