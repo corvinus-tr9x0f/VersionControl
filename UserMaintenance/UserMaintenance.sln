@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebServiceWeek06", "WebServ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactoryPatternWeek08", "FactoryPatternWeek08\FactoryPatternWeek08.csproj", "{C9B45D1A-FC28-464B-87E0-C135774E8357}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroSimWeek10", "MicroSimWeek10\MicroSimWeek10.csproj", "{B2EE9269-1AC0-4208-8400-5F4A57CEB6A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{C9B45D1A-FC28-464B-87E0-C135774E8357}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9B45D1A-FC28-464B-87E0-C135774E8357}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9B45D1A-FC28-464B-87E0-C135774E8357}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2EE9269-1AC0-4208-8400-5F4A57CEB6A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2EE9269-1AC0-4208-8400-5F4A57CEB6A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2EE9269-1AC0-4208-8400-5F4A57CEB6A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2EE9269-1AC0-4208-8400-5F4A57CEB6A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
