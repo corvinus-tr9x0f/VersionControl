@@ -20,32 +20,67 @@ namespace MicroSimWeek10
 
         Random rng = new Random(1234);
 
+        List<Person> Men = new List<Person>();
+        List<Person> Women = new List<Person>();
+
         public Form1()
         {
             InitializeComponent();
 
-            Population = GetPopulation(@"C:\Temp\nép-teszt.csv");
             BirthProbabilities = GetBirthProbabilities(@"C:\Temp\születés.csv");
             DeathProbabilities = GetDeathProbabilities(@"C:\Temp\halál.csv");
+        }
 
-            for (int year = 2005; year <= 2024; year++)
+        private void Simulation(int endYear, string csvPath)
+        {
+            txtMain.Clear();
+            Men.Clear();
+            Women.Clear();
+
+            Population = GetPopulation(csvPath);
+
+            for (int year = 2005; year <= endYear; year++)
             {
                 for (int i = 0; i < Population.Count; i++)
                 {
                     SimStep(year, Population[i]);
-                }
 
-                int nbrOfMales = (from x in Population
-                                  where x.Gender == Gender.Male && x.IsAlive
-                                  select x).Count();
-                int nbrOfFemales = (from x in Population
-                                    where x.Gender == Gender.Female && x.IsAlive
-                                    select x).Count();
-                Console.WriteLine(
-                    string.Format("Év:{0} Fiúk:{1} Lányok:{2}", year, nbrOfMales, nbrOfFemales));
+                    if (Population[i].Gender == Gender.Male && Population[i].IsAlive == true)
+                    {
+                        Men.Add(new Person()
+                        {
+                            BirthYear = Population[i].BirthYear,
+                            Gender = Population[i].Gender,
+                            NbrOfChildren = Population[i].NbrOfChildren,
+                            IsAlive = Population[i].IsAlive
+                        });
+                    }
+                    else if (Population[i].Gender == Gender.Female && Population[i].IsAlive == true)
+                    {
+                        Women.Add(new Person()
+                        {
+                            BirthYear = Population[i].BirthYear,
+                            Gender = Population[i].Gender,
+                            NbrOfChildren = Population[i].NbrOfChildren,
+                            IsAlive = Population[i].IsAlive
+                        });
+                    }
+
+                    int nbrOfMales = (from x in Population
+                                      where x.Gender == Gender.Male && x.IsAlive
+                                      select x).Count();
+                    int nbrOfFemales = (from x in Population
+                                        where x.Gender == Gender.Female && x.IsAlive
+                                        select x).Count();
+
+                    txtMain.Text += string.Format(
+                        string.Format("Szimulációs év:{0}\n\t Fiúk:{1} \n\tLányok:{2}\n\n",
+                        year,
+                        nbrOfMales,
+                        nbrOfFemales));
+                }
             }
         }
-
 
         public List<Person> GetPopulation(string csvpath)
         {
@@ -109,23 +144,29 @@ namespace MicroSimWeek10
 
         private void SimStep(int year, Person person)
         {
+            //Ha halott akkor kihagyjuk, ugrunk a ciklus következő lépésére
             if (!person.IsAlive) return;
 
+            // Letároljuk az életkort, hogy ne kelljen mindenhol újraszámolni
             byte age = (byte)(year - person.BirthYear);
 
+            // Halál kezelése
+            // Halálozási valószínűség kikeresése
             double pDeath = (from x in DeathProbabilities
                              where x.Gender == person.Gender && x.Age == age
                              select x.P).FirstOrDefault();
-
+            // Meghal a személy?
             if (rng.NextDouble() <= pDeath)
                 person.IsAlive = false;
 
+            //Születés kezelése - csak az élő nők szülnek
             if (person.IsAlive && person.Gender == Gender.Female)
             {
+                //Szülési valószínűség kikeresése
                 double pBirth = (from x in BirthProbabilities
                                  where x.Age == age
                                  select x.P).FirstOrDefault();
-
+                //Születik gyermek?
                 if (rng.NextDouble() <= pBirth)
                 {
                     Person újszülött = new Person();
@@ -135,6 +176,20 @@ namespace MicroSimWeek10
                     Population.Add(újszülött);
                 }
             }
+        }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            Simulation((int)numYear.Value, txtPath.Text);
+        }
+
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            var ofd = new OpenFileDialog();
+            ofd.FileName = txtPath.Text;
+
+            if (ofd.ShowDialog() != DialogResult.OK) return;
+            txtPath.Text = ofd.FileName;
         }
     }
 }
